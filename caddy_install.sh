@@ -51,7 +51,7 @@ Download_caddy(){
 	fi
 	
 	if [[ ${bit} == "x86_64" ]]; then
-		wget --no-check-certificate -O "caddy_linux.tar.gz" "https://caddyserver.com/download/linux/amd64${extension_all}"
+		wget --no-check-certificate -O "caddy_linux.tar.gz" "https://github.com/caddyserver/caddy/releases/download/v2.4.6/caddy_2.4.6_linux_amd64.tar.gz"
 	elif [[ ${bit} == "i386" || ${bit} == "i686" ]]; then
 		wget --no-check-certificate -O "caddy_linux.tar.gz" "https://caddyserver.com/download/linux/386${extension_all}"
 	elif [[ ${bit} == "armv7l" ]]; then
@@ -71,14 +71,14 @@ Download_caddy(){
 }
 Service_caddy(){
 	if [[ ${release} = "centos" ]]; then
-		if ! wget --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/service/caddy_centos -O /etc/init.d/caddy; then
+		if ! wget --no-check-certificate https://raw.githubusercontent.com/echoimg/doubi/master/service/adbyby_centos -O /etc/init.d/caddy; then
 			echo -e "${Error_font_prefix}[错误]${Font_suffix} Caddy服务 管理脚本下载失败 !" && exit 1
 		fi
 		chmod +x /etc/init.d/caddy
 		chkconfig --add caddy
 		chkconfig caddy on
 	else
-		if ! wget --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/service/caddy_debian -O /etc/init.d/caddy; then
+		if ! wget --no-check-certificate https://raw.githubusercontent.com/echoimg/doubi/master/service/adbyby_debian -O /etc/init.d/caddy; then
 			echo -e "${Error_font_prefix}[错误]${Font_suffix} Caddy服务 管理脚本下载失败 !" && exit 1
 		fi
 		chmod +x /etc/init.d/caddy
